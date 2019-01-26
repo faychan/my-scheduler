@@ -19,7 +19,6 @@ export default class FormInput extends Component {
         if(prevProps.schedule !== this.props.schedule || prevProps.date !== this.props.date) {
             if(this.props.schedule != null){
                 this.setState({subject:scheduled.subject, location:scheduled.location, description: scheduled.description})
-                console.log("aw", this.state);
             }else{
                 this.setState({subject:"", location:"", description: ""})
             }
@@ -32,7 +31,6 @@ export default class FormInput extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        console.log(this.props.schedule);
 
     }
 
