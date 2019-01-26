@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## My Schedule
+App is created to manage all events planned for the future and can also be notes of reminesence from the past which written by the user of course.
+
+### Screenshots
+![alt text](https://github.com/faychan/my-scheduler/blob/master/Screenshot%202019-01-26%20at%201.08.34%20PM.png)
+![alt text](https://github.com/faychan/my-scheduler/blob/master/Screenshot%202019-01-26%20at%201.09.15%20PM.png)
+![alt text](https://github.com/faychan/my-scheduler/blob/master/Screenshot%202019-01-26%20at%201.09.25%20PM.png)
+![alt text](https://github.com/faychan/my-scheduler/blob/master/Screenshot%202019-01-26%20at%201.09.47%20PM.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
