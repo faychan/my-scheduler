@@ -10,6 +10,8 @@ export default class FormInput extends Component {
             subject: "",
             location: "",
             description: "",
+            showDeleteButton: false,
+            titleButton: "Add"
     };
 
     componentDidUpdate(prevProps) {
@@ -17,10 +19,10 @@ export default class FormInput extends Component {
         var date = this.props.date;
 
         if(prevProps.schedule !== this.props.schedule || prevProps.date !== this.props.date) {
-            if(this.props.schedule != null){
-                this.setState({subject:scheduled.subject, location:scheduled.location, description: scheduled.description})
+            if(this.props.schedule != null && scheduled.subject!='' && scheduled.location!='' && scheduled.description!=''){
+                this.setState({subject:scheduled.subject, location:scheduled.location, description: scheduled.description, showDeleteButton: true, titleButton: "Update"})
             }else{
-                this.setState({subject:"", location:"", description: ""})
+                this.setState({subject:"", location:"", description: "",  showDeleteButton: false, titleButton: "Add"})
             }
         }
     }
@@ -39,12 +41,13 @@ export default class FormInput extends Component {
     }
 
     handleDelete() {
-        this.setState({subject:"", location:"", description: "", showDeleted: true});
+        this.setState({subject:"", location:"", description: "", showDeleted: true, showDeleteButton: false,  titleButton: "Add"});
         var saveObj ={subject:"", location:"", description:""};
         localStorage.setItem(this.props.date, JSON.stringify(saveObj));
     }
 
     handleSubmit(){
+        this.setState({showDeleteButton: true, titleButton: "Update", showSuccess: true });
         var saveObj ={subject:this.state.subject, location:this.state.location, description:this.state.description};
         localStorage.setItem(this.props.date, JSON.stringify(saveObj));
     }
@@ -59,8 +62,8 @@ export default class FormInput extends Component {
                         <Form.Field control={Input} name="location" label='Location' placeholder='' value={this.state.location} onChange={this.handleChange} required/>
                     </Form.Group>
                     <Form.Field control={TextArea} name="description" label='Description' placeholder='Things to note' value={this.state.description} onChange={this.handleChange} required/>
-                    <Button color='teal' type="submit" onClick={() => this.setState({ showSuccess: true })}>Add</Button>
-                    <Button color='red' onClick={this.handleDelete}>Delete</Button>
+                    <Button color='teal' type="submit">{this.state.titleButton}</Button>
+                    { this.state.showDeleteButton ? <Button color='red' onClick={this.handleDelete}>Delete</Button> : null }
                     <SweetAlert
                         show={this.state.showSuccess}
                         title="Added!!"
